@@ -41,7 +41,8 @@ export default function CTextinput({
   secure = false,
   title = "missing",
   error = false,
-  value = false
+  value = false,
+  keyboardType = "default"
 }) {
   const [secureOrNot, setSecureOrNot] = React.useState(secure);
   return (
@@ -49,6 +50,7 @@ export default function CTextinput({
       <Text style={styles.textHeaderStyle}>{title}</Text>
       <View style={styles.row}>
         <TextInput
+          keyboardType={keyboardType}
           value={value && value}
           style={styles.textInput}
           placeholder={placeholder}

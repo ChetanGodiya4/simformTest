@@ -1,21 +1,29 @@
 import { combineReducers } from "redux";
-import { provideToStore } from "./reducers/auth/authRed";
+import { authReducer } from "./reducers/auth/authRed";
+import { homeReducer } from "./reducers/home/homeReducer";
 import { AsyncStorage } from "react-native";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
-import { persistReducer } from "redux-persist";
-import logger from "redux-logger";
+import { persistReducer, persistStore } from "redux-persist";
+import { createLogger } from "redux-logger";
+const reducer = combineReducers(Object.assign({ authReducer, homeReducer }));
+
+//For avoid Spammy peoples
+const loggerMiddleware = createLogger({
+  predicate: (getState, action) => __DEV__
+});
 
 const persistConfig = {
   key: "root",
   storage: AsyncStorage
 };
-const reduces = combineReducers(Object.assign({ provideToStore }));
 
-function configureStore(initial) {
-  const enhance = compose(applyMiddleware(thunkMiddleware, logger));
-  return createStore(reduces, initial, enhance);
+const persistedReducer = persistReducer(persistConfig, reducer);
+
+function configureStore(initialState) {
+  const enhancer = compose(applyMiddleware(thunkMiddleware, loggerMiddleware));
+  return createStore(persistedReducer, initialState, enhancer);
 }
-const persistedReducer = persistReducer(persistConfig, reduces);
-
 export const store = configureStore({});
+
+export const persistor = persistStore(store);

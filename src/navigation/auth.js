@@ -12,7 +12,7 @@ export const AuthStack = createStackNavigator({
   SignIn: {
     screen: Login,
     navigationOptions: {
-      header: null
+      headerShown: false
     }
   }
 });

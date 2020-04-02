@@ -1,26 +1,20 @@
 {
   "expo": {
-    "name": "HelloWorld",
+    "name": "Simform Test",
     "slug": "simformTest",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/group2217.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/group2217@3x.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     }
