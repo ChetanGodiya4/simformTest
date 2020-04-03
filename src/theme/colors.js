@@ -1,4 +1,5 @@
 export const colorPallet = {
   white: "#fff",
-  grey: "lightgrey"
+  grey: "lightgrey",
+  darkGrey: "darkgrey"
 };

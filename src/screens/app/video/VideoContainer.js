@@ -74,7 +74,7 @@ class VideoContainer extends Component {
           data={videos}
           onRefresh={() => this.onRefresh()}
           refreshing={isFetching}
-          keyExtractor={item => item.index}
+          keyExtractor={(item, index) => index.toString()}
           onEndReached={() => this.onEnd()}
           contentContainerStyle={{ flexGrow: 1 }}
           renderItem={this.rednerList}

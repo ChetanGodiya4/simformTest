@@ -1,12 +1,15 @@
 import { combineReducers } from "redux";
 import { authReducer } from "./reducers/auth/authRed";
 import { homeReducer } from "./reducers/home/homeReducer";
+import { stripReducer } from "./reducers/home/stripReducer";
 import { AsyncStorage } from "react-native";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { persistReducer, persistStore } from "redux-persist";
 import { createLogger } from "redux-logger";
-const reducer = combineReducers(Object.assign({ authReducer, homeReducer }));
+const reducer = combineReducers(
+  Object.assign({ authReducer, homeReducer, stripReducer })
+);
 
 //For avoid Spammy peoples
 const loggerMiddleware = createLogger({
@@ -27,3 +30,5 @@ function configureStore(initialState) {
 export const store = configureStore({});
 
 export const persistor = persistStore(store);
+// persistor.purge();
+//
